@@ -1,18 +1,17 @@
-<div class="w-auto max-w-xs whitespace-pre-wrap overflow-hidden shadow-lg rounded-lg">
+<div class="gif-card">
 
-  <div class="w-full">
-    <img class="object-cover object-center h-52 w-full border-b-2 border-b-gray-100 gif-image"
-      [src]="data.images.downsized.url" width="500px" height="500px" alt="Giffy Image" loading="lazy">
-    <section class="p-4 grid gap-y-3 w-full">
-      <section class="grid grid-cols-2 items-baseline justify-between border-b-2 border-b-gray-100">
-        <span class="inline-block text-pink-500 font-semibold">Featured</span>
+  <div class="w-full gif-card-container">
+    <img class="gif-image" [src]="data.images.downsized.url" width="500px" height="500px" alt="Giffy Image"
+      loading="lazy">
+    <section class="p-4 grid gap-y-3 w-full gif-card-detail">
+      <section class="border-b-2 border-b-gray-100">
         <div>{{data.import_datetime | date}}</div>
       </section>
-      <div class="break-words grid gap-y-3">
+      <div class="gif-card-detail-content">
         <h3 class="font-medium">{{data.title}}</h3>
-        <div class="flex justify-end">
-          <span class="text-pink-500 font-medium cursor-pointer" [routerLink]="['/detail', data.slug]">Details</span>
-        </div>
+      </div>
+      <div class="flex justify-end">
+        <span class="" [routerLink]="['/detail', data.id]">Details</span>
       </div>
     </section>
   </div>

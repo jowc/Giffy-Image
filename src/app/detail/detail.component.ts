@@ -1,7 +1,9 @@
+import { Location } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FetchService } from '../shared/fetch.service';
+import { LoadingHandler } from '../shared/loading';
 
 @Component({
   selector: 'app-detail',
@@ -10,35 +12,45 @@ import { FetchService } from '../shared/fetch.service';
 })
 export class DetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  data?: any
+  gifs?: any
   sub!: Subscription
+  loading = new LoadingHandler()
+  routeParams!: string
 
   constructor(
     private route: ActivatedRoute,
-    private _route: Router,
-    private fetch: FetchService
+    private fetch: FetchService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
-    this.getGif()
+    this.route.params.subscribe(p => {
+      const params = p['slug']
+      this.routeParams = params
+    })
   }
 
   ngAfterViewInit(): void {
-    if (!this.data) {
-      this._route.navigate([''])
-    }
+    this.getGif()
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe()
+    this.fetch.gifs$.next(null)
   }
 
   getGif() {
-    this.sub = this.route.params.subscribe(p => {
-      const params = p['slug']
-      this.fetch.getGif(params)
-      this.sub = this.fetch.gifs$.subscribe(data => this.data = data)
+    this.loading.start()
+    this.fetch.getGif(this.routeParams)
+    this.sub = this.fetch.gifs$.subscribe(data => {
+      this.gifs = data.data
+      console.log("Detail data: ", this.gifs)
+      this.loading.finish()
     })
+  }
+
+  back() {
+    this.location.back()
   }
 
 }

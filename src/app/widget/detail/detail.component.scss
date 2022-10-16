@@ -1,0 +1,13 @@
+.gif-card {
+  @apply w-auto h-full max-w-xs overflow-hidden shadow-lg rounded-lg;
+  img {
+    @apply object-cover object-center h-52 w-full border-b-2 border-b-gray-100;
+  }
+  &-detail-content {
+    @apply break-words h-12 flex flex-col justify-between gap-y-4;
+  }
+
+  span {
+    @apply text-pink-500 font-medium cursor-pointer;
+  }
+}

@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { FetchService } from './shared/fetch.service';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -9,19 +8,9 @@ import { FetchService } from './shared/fetch.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private fetch: FetchService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.retainData()
-  }
-
-  retainData() {
-    let ls = localStorage.getItem('gif')
-    if (ls) {
-      const currentData = JSON.parse(ls)
-      console.log(currentData)
-      this.fetch.gifs$.next(currentData)
-    }
   }
 
 
