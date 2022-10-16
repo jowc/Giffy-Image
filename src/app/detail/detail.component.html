@@ -1,1 +1,21 @@
-<p>detail works!</p>
+<div class="py-10 px-4 sm:px-10 lg:py-40 max-w-5xl m-auto">
+
+  <div>
+
+    <img class="gif-image" src="{{data.images.original.url}}" alt="Gif Image">
+
+    <div>
+      <section>Date uploaded: {{data.import_datetime | date }}</section>
+      <section>Title: {{data.title}}</section>
+      <section>Creator: {{data.user.display_name}}</section>
+      <section>Username: {{data.user.username}}</section>
+      <section>Giphy Link: {{data.url}}</section>
+      <section>Instagram: {{data.user.instagram_url}}</section>
+      <section>Profile: {{data.user.profile_url}}</section>
+      <section>Website: {{data.user.website_url}}</section>
+      <section>Verified: {{data.user.is_verified ? 'Yes' : 'No'}}</section>
+    </div>
+
+  </div>
+
+</div>

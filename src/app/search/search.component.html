@@ -1,0 +1,35 @@
+<div class="mx-4 sm:mx-8 xl:max-w-7xl xl:mx-auto flex my-28 rounded-lg shadow overflow-x-hidden">
+
+  <div class="py-10 px-5 flex flex-col space-y-2 w-full">
+
+    <section class="grid gap-y-4 w-full justify-center pb-8 md:pb-16 border-b-2 border-gray-100">
+      <h3 class="text-2xl font-medium text-gray-900">Search Giffy</h3>
+
+      <div class="grid gap-y-4 justify-center">
+        <div>
+          <input #search type="search" name="search"
+            class="p-2 rounded w-72 focus:outline-none focus:outline-pink-200 bg-pink-50 shadow">
+        </div>
+        <div>
+          <button class="py-2 px-6 bg-pink-500 text-white font-bold rounded-md shadow"
+            (click)="qSearch(search.value); search.value = '';">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="message">{{message}}</section>
+
+    <section *ngIf="data" class="py-6 sm:py-8 grid md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center">
+
+      <ng-container *ngFor="let gifs of data.data; let i = index;">
+
+        <app-widget-detail [data]="gifs"></app-widget-detail>
+
+      </ng-container>
+
+    </section>
+
+
+  </div>
+
+</div>

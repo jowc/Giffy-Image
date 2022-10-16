@@ -1,20 +1,18 @@
-<div>
+<div class="w-auto max-w-xs whitespace-pre-wrap overflow-hidden shadow-lg rounded-lg">
 
-  <div class="">
-    <img class="" src="" alt="Giffy Image" srcset="">
-    <section class="">
-      <div><span class="">featured</span></div>
-      <div class="">
-        <div>Uploaded: date here</div>
-        <h3>{{Data|json}}</h3>
-        <div>
-          <img src="" alt="author">
-          <div>
-            <section>Author Name</section>
-            <section>Author username</section>
-          </div>
+  <div class="w-full">
+    <img class="object-cover object-center h-52 w-full border-b-2 border-b-gray-100 gif-image"
+      [src]="data.images.downsized.url" width="500px" height="500px" alt="Giffy Image" loading="lazy">
+    <section class="p-4 grid gap-y-3 w-full">
+      <section class="grid grid-cols-2 items-baseline justify-between border-b-2 border-b-gray-100">
+        <span class="inline-block text-pink-500 font-semibold">Featured</span>
+        <div>{{data.import_datetime | date}}</div>
+      </section>
+      <div class="break-words grid gap-y-3">
+        <h3 class="font-medium">{{data.title}}</h3>
+        <div class="flex justify-end">
+          <span class="text-pink-500 font-medium cursor-pointer" [routerLink]="['/detail', data.slug]">Details</span>
         </div>
-        <span>Details</span>
       </div>
     </section>
   </div>

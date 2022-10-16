@@ -7,23 +7,22 @@ import { FetchService } from './shared/fetch.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'giphy-search';
-
-  data?: any;
-
-  message?: string
-
-  sub?: Subscription
+export class AppComponent implements OnInit {
 
   constructor(private fetch: FetchService) { }
 
   ngOnInit(): void {
-    this.sub = this.fetch.getData('sphinx').subscribe((data: any) => this.data = data, (e: string) => this.message = e)
+    this.retainData()
   }
 
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe()
+  retainData() {
+    let ls = localStorage.getItem('gif')
+    if (ls) {
+      const currentData = JSON.parse(ls)
+      console.log(currentData)
+      this.fetch.gifs$.next(currentData)
+    }
   }
+
 
 }

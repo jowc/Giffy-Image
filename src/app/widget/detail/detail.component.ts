@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { delay, of } from 'rxjs';
 
 @Component({
   selector: 'app-widget-detail',
@@ -7,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DetailWidgetComponent implements OnInit {
 
-  @Input() Data?: string
+  @Input() data!: any | null
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  ImageInfo(slug: string) {
+    return of(slug).pipe(delay(3000)).subscribe()
+  }
+
 
 }
