@@ -1,1 +1,6 @@
 @import "./tailwind";
+
+.gif-image {
+  background: url("./assets/Spinner.gif");
+  @apply object-cover object-center bg-no-repeat;
+}

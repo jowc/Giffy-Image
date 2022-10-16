@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  giffY: 'deokzgUjxm6QHQdp3H3aca1LSZcCpucc'
+  giffY: 'dJeB24wf6fj6GhLlLfFi9rRhmq6ayznM'
 };
 
 /*

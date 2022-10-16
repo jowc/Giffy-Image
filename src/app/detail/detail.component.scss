@@ -1,0 +1,15 @@
+.gif-detail {
+  @apply my-4 mx-4 sm:mx-10 lg:my-20 xl:max-w-5xl shadow-lg;
+
+  &-content {
+    @apply mt-6 grid gap-y-2;
+
+    span {
+      @apply text-base font-bold font-serif;
+    }
+  }
+
+  button {
+    @apply rounded-3xl py-3 px-6 border-2 border-pink-300;
+  }
+}

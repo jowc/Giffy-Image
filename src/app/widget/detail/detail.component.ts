@@ -7,11 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DetailWidgetComponent implements OnInit {
 
-  @Input() Data?: string
+  @Input() data!: any | null
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

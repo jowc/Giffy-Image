@@ -1,20 +1,17 @@
-<div>
+<div class="gif-card">
 
-  <div class="">
-    <img class="" src="" alt="Giffy Image" srcset="">
-    <section class="">
-      <div><span class="">featured</span></div>
-      <div class="">
-        <div>Uploaded: date here</div>
-        <h3>{{Data|json}}</h3>
-        <div>
-          <img src="" alt="author">
-          <div>
-            <section>Author Name</section>
-            <section>Author username</section>
-          </div>
-        </div>
-        <span>Details</span>
+  <div class="w-full gif-card-container">
+    <img class="gif-image" [src]="data.images.downsized.url" width="500px" height="500px" alt="Giffy Image"
+      loading="lazy">
+    <section class="p-4 grid gap-y-3 w-full gif-card-detail">
+      <section class="border-b-2 border-b-gray-100">
+        <div>{{data.import_datetime | date}}</div>
+      </section>
+      <div class="gif-card-detail-content">
+        <h3 class="font-medium">{{data.title}}</h3>
+      </div>
+      <div class="flex justify-end">
+        <span class="" [routerLink]="['/detail', data.id]">Details</span>
       </div>
     </section>
   </div>
